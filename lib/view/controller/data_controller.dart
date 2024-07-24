@@ -7,6 +7,7 @@ class DataController extends GetxController{
     // TODO: implement onInit
     super.onInit();
     getData();
+
   }
   void getData()
   {
