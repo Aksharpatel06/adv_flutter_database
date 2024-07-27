@@ -24,12 +24,14 @@ class DetailsScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            textField(dataController),
-            saveAndUpdateButton(dataController),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              textField(dataController),
+              saveAndUpdateButton(dataController),
+            ],
+          ),
         ),
       ),
     );
