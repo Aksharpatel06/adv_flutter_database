@@ -39,7 +39,11 @@ Padding titleDiscipationText(DataController dataController, int index) {
         onTap: () {},
         child: Container(
           decoration: BoxDecoration(
-            color: countinerColor,
+            color: dataController.list[index]['priority'] == 2
+                ? secounderyColor.withOpacity(0.4)
+                : dataController.list[index]['priority'] == 1
+                    ? secounderyColor.withOpacity(0.2)
+                    : secounderyColor.withOpacity(0.6),
             borderRadius: BorderRadius.circular(8),
           ),
           padding: const EdgeInsets.all(12),
