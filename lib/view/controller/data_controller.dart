@@ -2,10 +2,12 @@ import 'package:adv_flutter_database/view/helper/data_sarvice.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_rx/get_rx.dart';
 
 class DataController extends GetxController {
   TextEditingController txtTitle = TextEditingController();
   TextEditingController txtDiscription = TextEditingController();
+  RxInt priorityIndex =1.obs;
 
   RxList list = [].obs;
   RxBool isUpdate = false.obs;
@@ -24,7 +26,7 @@ class DataController extends GetxController {
   }
 
   Future<void> initData() async {
-    await DataService.dataService.insertData(txtTitle.text,txtDiscription.text);
+    await DataService.dataService.insertData(txtTitle.text,txtDiscription.text,0,priorityIndex.value);
     await selectData();
   }
 
@@ -35,6 +37,7 @@ class DataController extends GetxController {
   void editData(int index) {
     txtTitle = TextEditingController(text: list[index]['title']);
     txtDiscription = TextEditingController(text: list[index]['subtitle']);
+    priorityIndex.value = list[index]['priority'];
     updateIndex.value = index;
   }
 
@@ -45,7 +48,19 @@ class DataController extends GetxController {
 
   Future<void> updateDataBase() async {
     await DataService.dataService
-        .updateDB(list[updateIndex.value]["id"], txtTitle.text, txtDiscription.text);
+        .updateDB(list[updateIndex.value]["id"], txtTitle.text, txtDiscription.text,priorityIndex.value);
     await selectData();
+  }
+
+  Future<void> doneTask(int id,int index)
+  async {
+    await DataService.dataService.updateDBDone(id,list[index]["isDone"]);
+    await selectData();
+  }
+
+
+  void upadatePriority(value)
+  {
+    priorityIndex.value = value;
   }
 }

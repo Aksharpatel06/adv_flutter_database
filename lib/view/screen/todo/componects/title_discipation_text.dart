@@ -8,8 +8,7 @@ import '../../details/details_screen.dart';
 
 Padding titleDiscipationText(DataController dataController, int index) {
   return Padding(
-    padding:
-    const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
+    padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
     child: Slidable(
       endActionPane: ActionPane(
         motion: const StretchMotion(),
@@ -45,12 +44,22 @@ Padding titleDiscipationText(DataController dataController, int index) {
           ),
           padding: const EdgeInsets.all(12),
           child: ListTile(
-            // text
+            leading: IconButton(
+              onPressed: () {
+                dataController.doneTask(
+                    dataController.list[index]['id'], index);
+              },
+              icon: dataController.list[index]['isDone'] == 0
+                  ? const Icon(Icons.check_box_outline_blank)
+                  : const Icon(
+                      Icons.check_box,
+                      color: Colors.green,
+                    ),
+            ),
             title: Text(
               dataController.list[index]['title'],
             ),
-            subtitle:
-            Text(dataController.list[index]['subtitle']),
+            subtitle: Text(dataController.list[index]['subtitle']),
           ),
         ),
       ),
