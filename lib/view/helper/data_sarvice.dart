@@ -22,9 +22,9 @@ class DataService {
     return database;
   }
 
-  Future<void> insertData() async {
+  Future<void> insertData( String? title, String? subtitle) async {
     await database!.rawInsert(
-        'INSERT INTO student (title , subtitle) VALUES("some name","Flutter")');
+        'INSERT INTO student (title , subtitle) VALUES("$title","$subtitle")');
   }
 
   Future<List<Map<String, Object?>>> addData() async {
@@ -41,9 +41,10 @@ class DataService {
     await database!.rawDelete(sql);
   }
 
-  void updateData(int id, String? title, String? subtitle) {
+  Future<void> updateDB(int id, String? title, String? subtitle) async {
     String sql = '''
-    update student SET title = $title ,subtitle =$subtitle   WHERE id = $id
+    UPDATE student SET title = "$title" ,subtitle ="$subtitle"   WHERE id = $id
     ''';
+    await database!.rawUpdate(sql);
   }
 }
