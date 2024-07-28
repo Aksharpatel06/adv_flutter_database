@@ -27,7 +27,7 @@ Padding titleDiscipationText(DataController dataController, int index) {
           ),
           SlidableAction(
             onPressed: (context) {
-              dataController.deleteData(dataController.list[index]['id']);
+              dataController.deleteData(dataController.list[index].id);
             },
             backgroundColor: Colors.red,
             icon: Icons.delete,
@@ -39,9 +39,9 @@ Padding titleDiscipationText(DataController dataController, int index) {
         onTap: () {},
         child: Container(
           decoration: BoxDecoration(
-            color: dataController.list[index]['priority'] == 'Medium'
+            color: dataController.list[index].priority == 'Medium'
                 ? secounderyColor.withOpacity(0.4)
-                : dataController.list[index]['priority'] =='Low'
+                : dataController.list[index].priority =='Low'
                     ? secounderyColor.withOpacity(0.2)
                     : secounderyColor.withOpacity(0.6),
             borderRadius: BorderRadius.circular(8),
@@ -52,9 +52,9 @@ Padding titleDiscipationText(DataController dataController, int index) {
               padding: EdgeInsets.zero,
               onPressed: () {
                 dataController.doneTask(
-                    dataController.list[index]['id'], index);
+                    dataController.list[index].id, index);
               },
-              icon: dataController.list[index]['isDone'] == 0
+              icon: dataController.list[index].isDone == 0
                   ? const Icon(Icons.check_box_outline_blank)
                   : const Icon(
                       Icons.check_box,
@@ -62,9 +62,9 @@ Padding titleDiscipationText(DataController dataController, int index) {
                     ),
             ),
             title: Text(
-              dataController.list[index]['title'],
+              dataController.list[index].title,
             ),
-            subtitle: Text(dataController.list[index]['subtitle']),
+            subtitle: Text(dataController.list[index].discription),
           ),
         ),
       ),
