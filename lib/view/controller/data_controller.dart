@@ -57,7 +57,6 @@ class DataController extends GetxController {
     await selectData();
   }
 
-
   void upadatePriority(value)
   {
     priority.value = value;
