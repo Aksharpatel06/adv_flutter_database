@@ -37,28 +37,28 @@ Column textField(DataController dataController) {
               () => Column(
                 children: [
                   RadioListTile(
-                    value: 1,
-                    groupValue: dataController.priorityIndex.value,
+                    value: "High",
+                    groupValue: dataController.priority.value,
                     onChanged: (value) {
                       dataController.upadatePriority(value);
                     },
                     title: const Text('High'),
                   ),
                   RadioListTile(
-                    value: 2,
-                    groupValue: dataController.priorityIndex.value,
+                    value: "Medium",
+                    groupValue: dataController.priority.value,
                     onChanged: (value) {
                       dataController.upadatePriority(value);
                     },
-                    title: const Text('medium'),
+                    title: const Text('Medium'),
                   ),
                   RadioListTile(
-                    value: 3,
-                    groupValue: dataController.priorityIndex.value,
+                    value: "Low",
+                    groupValue: dataController.priority.value,
                     onChanged: (value) {
                       dataController.upadatePriority(value);
                     },
-                    title: const Text('low'),
+                    title: const Text('Low'),
                   ),
                 ],
               ),

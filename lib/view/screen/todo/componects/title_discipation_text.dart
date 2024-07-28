@@ -39,9 +39,9 @@ Padding titleDiscipationText(DataController dataController, int index) {
         onTap: () {},
         child: Container(
           decoration: BoxDecoration(
-            color: dataController.list[index]['priority'] == 2
+            color: dataController.list[index]['priority'] == 'Medium'
                 ? secounderyColor.withOpacity(0.4)
-                : dataController.list[index]['priority'] == 1
+                : dataController.list[index]['priority'] =='Low'
                     ? secounderyColor.withOpacity(0.2)
                     : secounderyColor.withOpacity(0.6),
             borderRadius: BorderRadius.circular(8),
@@ -49,6 +49,7 @@ Padding titleDiscipationText(DataController dataController, int index) {
           padding: const EdgeInsets.all(12),
           child: ListTile(
             leading: IconButton(
+              padding: EdgeInsets.zero,
               onPressed: () {
                 dataController.doneTask(
                     dataController.list[index]['id'], index);
