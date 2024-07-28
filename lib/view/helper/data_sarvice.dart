@@ -7,6 +7,7 @@ class DataService {
 
   DataService._();
 
+  // CRUD OPERATION
 
   // CREATE TABLE
   Future<Database?> createDatabase() async {
