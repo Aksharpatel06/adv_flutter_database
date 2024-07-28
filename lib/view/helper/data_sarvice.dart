@@ -7,6 +7,8 @@ class DataService {
 
   DataService._();
 
+
+  // CREATE TABLE
   Future<Database?> createDatabase() async {
     String data = await getDatabasesPath();
     String dbPath = join(data, 'demo.db');
@@ -22,12 +24,14 @@ class DataService {
     return database;
   }
 
+  // INSERT DATA
   Future<void> insertData(
       String? title, String? subtitle, int? isDone, String? priority) async {
     await database!.rawInsert(
         'INSERT INTO student (title , subtitle,isDone,priority) VALUES("$title","$subtitle","$isDone","$priority")');
   }
 
+  // READ DATA
   Future<List<Map<String, Object?>>> addData() async {
     String sql = '''
     SELECT * FROM student
@@ -35,6 +39,7 @@ class DataService {
     return await database!.rawQuery(sql);
   }
 
+  // DELETE DATA
   Future<void> removeData(int id) async {
     String sql = '''
     DELETE FROM student WHERE id = $id
@@ -42,6 +47,7 @@ class DataService {
     await database!.rawDelete(sql);
   }
 
+  // UPDATE DATA
   Future<void> updateDB(
       int id, String? title, String? subtitle, String? priority) async {
     String sql = '''
@@ -50,6 +56,7 @@ class DataService {
     await database!.rawUpdate(sql);
   }
 
+  // UPDATE DATA
   Future<void> updateDBDone(int id, int isDone) async {
     if (isDone == 0) {
       isDone = 1;
