@@ -18,7 +18,7 @@ class DataController extends GetxController {
     // TODO: implement onInit
     super.onInit();
     getData();
-    // selectData();
+    selectData();
   }
 
   void getData() {
